@@ -1,7 +1,7 @@
 package dao.interfaces;
 
 
-import entitiy.User;
+import entity.User;
 
 
 public interface UserDao extends GenericDAO<User, String> {

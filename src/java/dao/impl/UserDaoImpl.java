@@ -2,7 +2,7 @@ package dao.impl;
 
 import dao.GenericHibernateDAO;
 import dao.interfaces.UserDao;
-import entitiy.User;
+import entity.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

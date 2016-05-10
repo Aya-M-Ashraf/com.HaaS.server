@@ -1,4 +1,4 @@
-package entitiy;
+package entity;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -6,7 +6,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,11 +42,11 @@ public class Device implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "serial_number")
     private String serialNumber;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
     private Collection<UserUsesDevice> userUsesDeviceCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
     private Collection<DeviceOldSessionDevices> deviceOldSessionDevicesCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device1", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device1")
     private Collection<DeviceOldSessionDevices> deviceOldSessionDevicesCollection1;
 
     public Device() {

@@ -1,13 +1,12 @@
-package entitiy;
+package entity;
 
-import entitiy.key.DeviceOldSessionDevicesPK;
+import entity.key.DeviceOldSessionDevicesPK;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -45,10 +44,10 @@ public class DeviceOldSessionDevices implements Serializable {
     @Column(name = "consumed_mb")
     private double consumedMb;
     @JoinColumn(name = "guest_device_id", referencedColumnName = "device_id", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Device device;
     @JoinColumn(name = "host_device_id", referencedColumnName = "device_id", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Device device1;
 
     public DeviceOldSessionDevices() {

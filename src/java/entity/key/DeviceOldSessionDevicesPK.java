@@ -1,9 +1,17 @@
-package entitiy.key;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package entity.key;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -11,7 +19,7 @@ import javax.validation.constraints.NotNull;
  * @author Aya M. Ashraf
  */
 @Embeddable
-public class DeviceCurrentlyConnectedDevicesPK implements Serializable {
+public class DeviceOldSessionDevicesPK implements Serializable {
 
     @Basic(optional = false)
     @NotNull
@@ -21,13 +29,19 @@ public class DeviceCurrentlyConnectedDevicesPK implements Serializable {
     @NotNull
     @Column(name = "guest_device_id")
     private int guestDeviceId;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "start_timestamp")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date startTimestamp;
 
-    public DeviceCurrentlyConnectedDevicesPK() {
+    public DeviceOldSessionDevicesPK() {
     }
 
-    public DeviceCurrentlyConnectedDevicesPK(int hostDeviceId, int guestDeviceId) {
+    public DeviceOldSessionDevicesPK(int hostDeviceId, int guestDeviceId, Date startTimestamp) {
         this.hostDeviceId = hostDeviceId;
         this.guestDeviceId = guestDeviceId;
+        this.startTimestamp = startTimestamp;
     }
 
     public int getHostDeviceId() {
@@ -46,25 +60,37 @@ public class DeviceCurrentlyConnectedDevicesPK implements Serializable {
         this.guestDeviceId = guestDeviceId;
     }
 
+    public Date getStartTimestamp() {
+        return startTimestamp;
+    }
+
+    public void setStartTimestamp(Date startTimestamp) {
+        this.startTimestamp = startTimestamp;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (int) hostDeviceId;
         hash += (int) guestDeviceId;
+        hash += (startTimestamp != null ? startTimestamp.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof DeviceCurrentlyConnectedDevicesPK)) {
+        if (!(object instanceof DeviceOldSessionDevicesPK)) {
             return false;
         }
-        DeviceCurrentlyConnectedDevicesPK other = (DeviceCurrentlyConnectedDevicesPK) object;
+        DeviceOldSessionDevicesPK other = (DeviceOldSessionDevicesPK) object;
         if (this.hostDeviceId != other.hostDeviceId) {
             return false;
         }
         if (this.guestDeviceId != other.guestDeviceId) {
+            return false;
+        }
+        if ((this.startTimestamp == null && other.startTimestamp != null) || (this.startTimestamp != null && !this.startTimestamp.equals(other.startTimestamp))) {
             return false;
         }
         return true;
@@ -72,7 +98,7 @@ public class DeviceCurrentlyConnectedDevicesPK implements Serializable {
 
     @Override
     public String toString() {
-        return "entitiy.DeviceCurrentlyConnectedDevicesPK[ hostDeviceId=" + hostDeviceId + ", guestDeviceId=" + guestDeviceId + " ]";
+        return "entitiy.DeviceOldSessionDevicesPK[ hostDeviceId=" + hostDeviceId + ", guestDeviceId=" + guestDeviceId + ", startTimestamp=" + startTimestamp + " ]";
     }
     
 }

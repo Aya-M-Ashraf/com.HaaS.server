@@ -1,13 +1,12 @@
-package entitiy;
+package entity;
 
-import entitiy.key.UserTransferCoinsUserPK;
+import entity.key.UserTransferCoinsUserPK;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -39,10 +38,10 @@ public class UserTransferCoinsUser implements Serializable {
     @Column(name = "coins_amount")
     private int coinsAmount;
     @JoinColumn(name = "borrower_user_id", referencedColumnName = "user_id", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private User user;
     @JoinColumn(name = "lender_user_id", referencedColumnName = "user_id", insertable = false, updatable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private User user1;
 
     public UserTransferCoinsUser() {

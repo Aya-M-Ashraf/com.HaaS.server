@@ -11,7 +11,7 @@ http://www.springframework.org/schema/tx
   http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
 >
     <context:annotation-config/>
-    <context:component-scan base-package="dao,test"/>
+    <context:component-scan base-package="dao"/>
      
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -25,7 +25,8 @@ http://www.springframework.org/schema/tx
 
         <property name="packagesToScan">
             <list>
-                <value>dao</value>
+                <value>entity</value>
+                <value>entity.key</value>
             </list>
         </property>
        

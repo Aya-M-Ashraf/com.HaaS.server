@@ -1,4 +1,4 @@
-package entitiy;
+package entity;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -6,7 +6,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -79,11 +78,11 @@ public class User implements Serializable {
     @NotNull
     @Column(name = "silver_coins")
     private double silverCoins;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Collection<UserUsesDevice> userUsesDeviceCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Collection<UserTransferCoinsUser> userTransferCoinsUserCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user1", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user1")
     private Collection<UserTransferCoinsUser> userTransferCoinsUserCollection1;
 
     public User() {
