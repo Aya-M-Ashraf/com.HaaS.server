@@ -21,10 +21,17 @@ public class RegisterWS {
 
     @GET
     @Path("/register")
-    public Result register(@QueryParam(Constants.EMAIL) String email) {
+    public Result register(@QueryParam(Constants.EMAIL) String email,@QueryParam(Constants.F_NAME) String fName,@QueryParam(Constants.L_NAME) String lName,@QueryParam(Constants.PHONE) String phone,@QueryParam(Constants.PASSWORD) String password) {
+        
         Result result = new Result();
         UserDTO userDto = new UserDTO();
         userDto.setEmail(email);
+        userDto.setFirstName(fName);
+        userDto.setLastName(lName);
+        userDto.setPhone(phone);
+        userDto.setPassword(password);
+        userDto.setGoldenCoins(100);
+        userDto.setSilverCoins(100);
         userDto = userServiceImpl.addUser(userDto);
 
         if (userDto != null) {
