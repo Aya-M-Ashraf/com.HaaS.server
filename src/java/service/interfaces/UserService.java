@@ -1,6 +1,6 @@
 package service.interfaces;
 
-import entity.User;
+import commons.dto.UserDTO;
 
 /**
  *
@@ -8,6 +8,6 @@ import entity.User;
  */
 public interface UserService {
     
-    public User registerUser(User user);
+    public UserDTO addUser(UserDTO user);
     
 }

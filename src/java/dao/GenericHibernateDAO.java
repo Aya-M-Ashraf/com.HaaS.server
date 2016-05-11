@@ -40,7 +40,6 @@ public abstract class GenericHibernateDAO<T, ID extends Serializable> implements
     public List<T> findAll() {
         try {
             List<T> result = getSession().createCriteria(getPersistentClass()).list();
-            System.out.println(getPersistentClass().getCanonicalName());
             return result;
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -1,4 +1,4 @@
-package com.hibernate.dto;
+package commons.dto;
 
 
 /**

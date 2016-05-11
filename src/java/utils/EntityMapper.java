@@ -1,6 +1,6 @@
 package utils;
 
-import com.hibernate.dto.UserDTO;
+import commons.dto.UserDTO;
 import entity.User;
 
 /**

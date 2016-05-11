@@ -1,4 +1,4 @@
-package com.hibernate.dto;
+package commons.dto;
 // Generated May 9, 2016 10:35:03 PM by Hibernate Tools 4.3.1
 
 /**
