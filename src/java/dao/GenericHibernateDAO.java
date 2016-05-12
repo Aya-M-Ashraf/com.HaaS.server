@@ -69,4 +69,10 @@ public abstract class GenericHibernateDAO<T, ID extends Serializable> implements
         getSession().delete(entity);
     }
 
+    @Override
+    public T update(T entity){
+        getSession().update(entity);
+        return entity;
+    }
+
 }

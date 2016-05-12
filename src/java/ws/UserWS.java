@@ -11,10 +11,6 @@ import javax.ws.rs.core.MediaType;
 import service.impl.UserServiceImpl;
 import service.interfaces.UserService;
 
-/**
- *
- * @author Aya M. Ashraf
- */
 @Path("/user")
 public class UserWS {
 
@@ -80,4 +76,23 @@ public class UserWS {
         return result;
     }
 
+    @GET
+    @Path("/retrievePassword")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Result retrievePassword(@QueryParam(Constants.EMAIL) String email, @QueryParam(Constants.PHONE) String phone) {
+        Result result = new Result();
+        UserDTO user = userServiceImpl.updateUserPassword(email, phone);
+        if (user == null) {
+            result.setSuccess(false);
+            result.setMsg("The Entered Values are not Valid");
+            result.setObj(null);
+            result.setCode("retrievePassword");
+        } else {
+            result.setSuccess(true);
+            result.setMsg(null);
+            result.setObj(user);
+            result.setCode("retrievePassword");
+        }
+        return result;
+    }
 }
