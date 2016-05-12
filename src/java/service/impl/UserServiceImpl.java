@@ -31,4 +31,14 @@ public class UserServiceImpl implements UserService {
         user = userDao.makePersistent(user);
         return mapper.mapUserToUserDto(user);
     }
+
+    @Override
+    public UserDTO getUserByEmail(String email) {
+       User user = userDao.getUserByEmail(email);
+       if(user == null){
+           return null;
+       }else{
+           return mapper.mapUserToUserDto(user);
+       }
+    }
 }

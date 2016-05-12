@@ -21,7 +21,7 @@ public class SpringHibernate {
         userTest.setSilverCoins(1303400);
 
 //        dao.makePersistent(user);
-        User user = dao.getUserByEmail("shall@gmail.com");
+//        User user = dao.getUserByEmail("shall@gmail.com");
 //        System.out.println(dao.findAll().size());
 //        System.out.println("Last Name: " + user.getLastName());
         dao.transferCoinsToUser("silver", 1000, "Aya@ay7aga", "shall@gmail.com");
