@@ -56,6 +56,10 @@ public class Device implements Serializable {
         this.deviceId = deviceId;
     }
 
+    public Device(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+    
     public Device(Integer deviceId, String serialNumber) {
         this.deviceId = deviceId;
         this.serialNumber = serialNumber;

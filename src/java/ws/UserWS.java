@@ -3,23 +3,28 @@ package ws;
 import commons.dto.UserDTO;
 import commons.ws.Constants;
 import commons.ws.Result;
+import java.util.ArrayList;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import service.impl.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import service.interfaces.UserService;
 
 @Path("/user")
+@Component
 public class UserWS {
 
+    @Autowired
     private UserService userServiceImpl;
 
     public UserWS() {
-        userServiceImpl = new UserServiceImpl();
+        System.out.println("------------- UserWS is crested");
     }
-
+    
+    
     @GET
     @Path("/register")
     @Produces(MediaType.APPLICATION_JSON)
@@ -68,11 +73,18 @@ public class UserWS {
     }
 
     @GET
-    @Path("/transfareCoins")
+    @Path("/transfer")
     @Produces(MediaType.APPLICATION_JSON)
-    public Result transfareCoins(@QueryParam(Constants.EMAIL) String email) {
-        Result result = new Result();
-        //to be continued 
+    public Result transferCoins(@QueryParam(Constants.COINS_TYPE) String coinsType, @QueryParam(Constants.COINS_COUNT) double coinsCount, @QueryParam(Constants.SENDER_EMAIL) String senderEmail, @QueryParam(Constants.RECEIVER_EMAIL) String receiverEmail) {
+        Result result = new Result();        
+        ArrayList resultArrayList = userServiceImpl.transferCoinsToUser(coinsType, coinsCount, senderEmail, receiverEmail);
+        if (resultArrayList.size() > 0) {
+            String message = (String) resultArrayList.get(0);
+            boolean success = (boolean) resultArrayList.get(1);
+            result.setMsg(message);
+            result.setSuccess(success);
+        }
+        
         return result;
     }
 
