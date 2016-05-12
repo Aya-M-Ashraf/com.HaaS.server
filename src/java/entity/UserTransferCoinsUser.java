@@ -1,6 +1,5 @@
 package entity;
 
-import entity.key.UserTransferCoinsUserPK;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -36,13 +35,13 @@ public class UserTransferCoinsUser implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "coins_amount")
-    private int coinsAmount;
+    private double coinsAmount;
     @JoinColumn(name = "borrower_user_id", referencedColumnName = "user_id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private User user;
+    private User borrowerUser;
     @JoinColumn(name = "lender_user_id", referencedColumnName = "user_id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private User user1;
+    private User lenderUser;
 
     public UserTransferCoinsUser() {
     }
@@ -51,7 +50,7 @@ public class UserTransferCoinsUser implements Serializable {
         this.userTransferCoinsUserPK = userTransferCoinsUserPK;
     }
 
-    public UserTransferCoinsUser(UserTransferCoinsUserPK userTransferCoinsUserPK, int coinsAmount) {
+    public UserTransferCoinsUser(UserTransferCoinsUserPK userTransferCoinsUserPK, double coinsAmount) {
         this.userTransferCoinsUserPK = userTransferCoinsUserPK;
         this.coinsAmount = coinsAmount;
     }
@@ -68,28 +67,28 @@ public class UserTransferCoinsUser implements Serializable {
         this.userTransferCoinsUserPK = userTransferCoinsUserPK;
     }
 
-    public int getCoinsAmount() {
+    public double getCoinsAmount() {
         return coinsAmount;
     }
 
-    public void setCoinsAmount(int coinsAmount) {
+    public void setCoinsAmount(double coinsAmount) {
         this.coinsAmount = coinsAmount;
     }
 
-    public User getUser() {
-        return user;
+    public User getBorrowerUser() {
+        return borrowerUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setBorrowerUser(User user) {
+        this.borrowerUser = user;
     }
 
-    public User getUser1() {
-        return user1;
+    public User getLenderUser() {
+        return lenderUser;
     }
 
-    public void setUser1(User user1) {
-        this.user1 = user1;
+    public void setLenderUser(User lenderUser) {
+        this.lenderUser = lenderUser;
     }
 
     @Override
@@ -116,5 +115,5 @@ public class UserTransferCoinsUser implements Serializable {
     public String toString() {
         return "entitiy.UserTransferCoinsUser[ userTransferCoinsUserPK=" + userTransferCoinsUserPK + " ]";
     }
-    
+
 }

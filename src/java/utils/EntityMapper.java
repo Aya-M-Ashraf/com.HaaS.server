@@ -10,7 +10,7 @@ import entity.User;
 public class EntityMapper {
     
     public User mapUserDtoToUser (UserDTO userDto){
-        User user = new User(userDto.getUserId(),userDto.getEmail(),userDto.getFirstName(),userDto.getLastName(),userDto.getPhone(),userDto.getPassword(),userDto.getGoldenCoins(),userDto.getSilverCoins());
+        User user = new User(userDto.getEmail(),userDto.getFirstName(),userDto.getLastName(),userDto.getPhone(),userDto.getPassword(),userDto.getGoldenCoins(),userDto.getSilverCoins());
         return user;
     }
     

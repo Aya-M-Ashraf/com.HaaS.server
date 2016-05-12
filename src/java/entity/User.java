@@ -80,9 +80,9 @@ public class User implements Serializable {
     private double silverCoins;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Collection<UserUsesDevice> userUsesDeviceCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lenderUser")
     private Collection<UserTransferCoinsUser> userTransferCoinsUserCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user1")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "borrowerUser")
     private Collection<UserTransferCoinsUser> userTransferCoinsUserCollection1;
 
     public User() {
@@ -90,6 +90,16 @@ public class User implements Serializable {
 
     public User(Integer userId) {
         this.userId = userId;
+    }
+
+    public User(String email, String firstName, String lastName, String phone, String password, double goldenCoins, double silverCoins) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.password = password;
+        this.goldenCoins = goldenCoins;
+        this.silverCoins = silverCoins;
     }
 
     public User(Integer userId, String email, String firstName, String lastName, String phone, String password, double goldenCoins, double silverCoins) {
@@ -218,5 +228,5 @@ public class User implements Serializable {
     public String toString() {
         return "entitiy.User[ userId=" + userId + " ]";
     }
-    
+
 }
